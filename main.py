@@ -9,7 +9,8 @@ def files():
             if file == 'keylock' or file == 'main.py':
                 continue
             else:
-                files_list.append(file)
+                if os.path.isfile(file):
+                    files_list.append(file)
     except:
         box.showerror(title='Error', message='No files in current directory')
     return files_list
@@ -59,5 +60,8 @@ if __name__ == '__main__':
 
     lockBtn.place(x= 90, y=170)
     unlockBtn.place(x= 170, y= 170)
+
+    exitBtn= Button(text='Exit', command=exit)
+    exitBtn.place(x=130, y=220)
 
     root.mainloop()
